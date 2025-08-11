@@ -12,12 +12,15 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 relative overflow-hidden">
-      {/* Background decoration */}
+    <section id="home" className="min-h-screen flex items-center justify-center bg-ikat bg-cover bg-center bg-no-repeat relative overflow-hidden">
+      {/* Semi-transparent white overlay for text readability */}
+      <div className="absolute inset-0 bg-white/70"></div>
+      
+      {/* Enhanced background decoration with new theme colors */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute top-40 left-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent/20 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute top-40 left-40 w-80 h-80 bg-highlight/15 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
       </div>
 
       <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
@@ -30,17 +33,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 font-heading"
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 font-heading"
           >
-                         Hi, I&apos;m{' '}
-            <span className="text-blue-600">Indrani Majumdar</span>
+            Hi, I&apos;m{' '}
+            <span className="text-primary">Indrani Majumdar</span>
           </motion.h1>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl sm:text-2xl lg:text-3xl text-gray-700 mb-8 font-medium"
+            className="text-xl sm:text-2xl lg:text-3xl text-secondary mb-8 font-medium"
           >
             Software Development Engineer in Test
           </motion.h2>
@@ -49,7 +52,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-lg text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg text-secondary mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             Passionate about quality assurance, test automation, and building robust software solutions. 
             I bridge the gap between development and testing to ensure exceptional user experiences.
@@ -70,7 +73,7 @@ export default function Hero() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="btn-textile px-8 py-4 rounded-lg font-semibold text-lg shadow-lg hover:shadow-xl hover-lift transition-all duration-300"
             >
               View Resume
             </motion.button>
@@ -84,14 +87,14 @@ export default function Hero() {
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200"
+              className="btn-textile-outline px-8 py-4 rounded-lg font-semibold text-lg hover-lift transition-all duration-300"
             >
               View Projects
             </motion.button>
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator */}
+        {/* Enhanced scroll indicator with new theme styling */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -102,12 +105,18 @@ export default function Hero() {
             onClick={scrollToAbout}
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="text-gray-600 hover:text-blue-600 transition-colors duration-200"
+            className="text-secondary hover:text-primary transition-all duration-300 p-2 rounded-full hover:bg-primary/5 group"
           >
-            <ChevronDown size={32} />
+            <ChevronDown size={32} className="group-hover:scale-110 transition-transform duration-300" />
           </motion.button>
         </motion.div>
       </div>
+
+      {/* Decorative elements with new theme colors */}
+      <div className="absolute top-20 left-20 w-2 h-20 bg-gradient-to-b from-primary/30 to-accent/30 rounded-full opacity-60"></div>
+      <div className="absolute bottom-20 right-20 w-2 h-20 bg-gradient-to-b from-accent/30 to-highlight/30 rounded-full opacity-60"></div>
+      <div className="absolute top-1/2 left-10 w-16 h-1 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full opacity-40"></div>
+      <div className="absolute top-1/2 right-10 w-16 h-1 bg-gradient-to-l from-highlight/20 to-accent/20 rounded-full opacity-40"></div>
 
       <style jsx>{`
         @keyframes blob {

@@ -1,19 +1,14 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #F9FAFB;
-  --foreground: #1F2937;
-  --primary: #2563EB;
-  --secondary: #4B5563;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-poppins);
+  --background: #F4F1EA;
+  --foreground: #1A1A1A;
+  --primary: #264653;
+  --secondary: #4B4B4B;
+  --accent: #E9C46A;
+  --highlight: #F4A261;
 }
 
 html {
@@ -23,23 +18,268 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), 'Inter', Arial, Helvetica, sans-serif;
 }
 
-/* Custom scrollbar */
+/* Beautiful ikat textile background pattern */
+.ikat-pattern {
+  background-image: 
+    /* Main ikat diamond pattern */
+    linear-gradient(45deg, rgba(38, 70, 83, 0.03) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(38, 70, 83, 0.03) 1px, transparent 1px),
+    /* Secondary ikat dots */
+    radial-gradient(circle at 25% 25%, rgba(233, 196, 106, 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(244, 162, 97, 0.02) 1px, transparent 1px),
+    /* Subtle ikat crosshatch */
+    linear-gradient(90deg, rgba(38, 70, 83, 0.015) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(38, 70, 83, 0.015) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 40px 40px, 40px 40px, 20px 20px, 20px 20px;
+  background-position: 0 0, 30px 30px, 0 0, 20px 20px, 0 0, 0 0;
+}
+
+/* Ikat pattern for section headers - more prominent */
+.ikat-pattern-header {
+  background-image: 
+    /* Enhanced ikat diamond pattern */
+    linear-gradient(45deg, rgba(38, 70, 83, 0.06) 1px, transparent 1px),
+    linear-gradient(-45deg, rgba(38, 70, 83, 0.06) 1px, transparent 1px),
+    /* Ikat accent dots */
+    radial-gradient(circle at 20% 20%, rgba(233, 196, 106, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, rgba(244, 162, 97, 0.04) 1px, transparent 1px),
+    /* Ikat crosshatch */
+    linear-gradient(90deg, rgba(38, 70, 83, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(38, 70, 83, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px, 50px 50px, 35px 35px, 35px 35px, 18px 18px, 18px 18px;
+  background-position: 0 0, 25px 25px, 0 0, 17px 17px, 0 0, 0 0;
+}
+
+/* Ikat pattern for cards - very subtle */
+.ikat-pattern-card {
+  background-image: 
+    /* Minimal ikat dots */
+    radial-gradient(circle at 30% 30%, rgba(38, 70, 83, 0.02) 1px, transparent 1px),
+    radial-gradient(circle at 70% 70%, rgba(233, 196, 106, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px, 60px 60px;
+  background-position: 0 0, 25px 25px;
+}
+
+/* Enhanced borders with new theme colors */
+.textile-border {
+  position: relative;
+}
+
+.textile-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary), var(--accent), var(--primary), transparent);
+  opacity: 0.7;
+  border-radius: 1px;
+}
+
+.textile-border-left {
+  position: relative;
+}
+
+.textile-border-left::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--primary), var(--accent), var(--primary));
+  opacity: 0.6;
+  border-radius: 2px;
+}
+
+/* Soft hover effects with new theme */
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(38, 70, 83, 0.12);
+}
+
+.hover-textile {
+  transition: all 0.3s ease;
+}
+
+.hover-textile:hover {
+  background: linear-gradient(135deg, rgba(38, 70, 83, 0.05), rgba(233, 196, 106, 0.05));
+  border-color: var(--accent);
+}
+
+/* Button styles with new theme colors */
+.btn-textile {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-textile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-textile:hover::before {
+  left: 100%;
+}
+
+.btn-textile:hover {
+  background: var(--highlight);
+  border-color: var(--highlight);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(38, 70, 83, 0.15);
+}
+
+.btn-textile-outline {
+  background: transparent;
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+.btn-textile-outline:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(38, 70, 83, 0.15);
+}
+
+/* Section dividers */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(38, 70, 83, 0.1), transparent);
+  margin: 2rem 0;
+}
+
+/* Card styles with minimal shadows and ikat pattern */
+.card-textile {
+  background: white;
+  border: 1px solid rgba(38, 70, 83, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(38, 70, 83, 0.08);
+}
+
+.card-textile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-textile:hover::before {
+  opacity: 1;
+}
+
+.card-textile:hover {
+  border-color: rgba(38, 70, 83, 0.2);
+  box-shadow: 0 4px 16px rgba(38, 70, 83, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbar with new theme colors */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: rgba(38, 70, 83, 0.05);
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--primary), var(--accent));
+  border-radius: 5px;
+  border: 2px solid var(--background);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8;
+  background: linear-gradient(180deg, var(--highlight), var(--accent));
+}
+
+/* Animation delays for staggered effects */
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-600 {
+  animation-delay: 600ms;
+}
+
+.animation-delay-800 {
+  animation-delay: 800ms;
+}
+
+/* Fade-in animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
 }

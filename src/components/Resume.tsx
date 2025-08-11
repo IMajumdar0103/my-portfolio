@@ -54,7 +54,7 @@ export default function Resume() {
   };
 
   return (
-    <section id="resume" className="py-20 bg-gray-50">
+    <section id="resume" className="py-20 bg-background ikat-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -63,16 +63,13 @@ export default function Resume() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-heading">
-            Resume
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading textile-border">Resume</h2>
           
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleDownload}
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="btn-textile inline-flex items-center gap-2 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl hover-lift"
           >
             <Download size={20} />
             Download Resume
@@ -80,15 +77,15 @@ export default function Resume() {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Education */}
+          {/* Education with new theme styling */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 font-heading flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+            <h3 className="text-2xl font-bold text-primary mb-8 font-heading flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-white text-sm font-bold">E</span>
               </div>
               Education
@@ -102,39 +99,39 @@ export default function Resume() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="relative pl-8 border-l-2 border-blue-200"
+                  className="relative pl-8 border-l-2 border-primary/30"
                 >
-                  <div className="absolute -left-2 w-4 h-4 bg-blue-600 rounded-full"></div>
-                  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <div className="flex items-center gap-2 text-blue-600 text-sm font-medium mb-2">
+                  <div className="absolute -left-2 w-4 h-4 bg-gradient-to-br from-primary to-accent rounded-full shadow-md"></div>
+                  <div className="card-textile p-6 rounded-lg">
+                    <div className="flex items-center gap-2 text-primary text-sm font-medium mb-2">
                       <Calendar size={16} />
                       {item.year}
                     </div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">{item.degree}</h4>
-                    <div className="flex items-center gap-2 text-gray-600 mb-2">
+                    <h4 className="text-xl font-semibold text-foreground mb-2">{item.degree}</h4>
+                    <div className="flex items-center gap-2 text-secondary mb-2">
                       <Building size={16} />
                       {item.institution}
                     </div>
-                    <div className="flex items-center gap-2 text-gray-600 mb-3">
+                    <div className="flex items-center gap-2 text-secondary mb-3">
                       <MapPin size={16} />
                       {item.location}
                     </div>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-secondary">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* Experience */}
+          {/* Experience with new theme styling */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 font-heading flex items-center gap-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
+            <h3 className="text-2xl font-bold text-primary mb-8 font-heading flex items-center gap-3">
+              <div className="w-8 h-8 bg-gradient-to-br from-accent to-highlight rounded-full flex items-center justify-center shadow-lg">
                 <span className="text-white text-sm font-bold">W</span>
               </div>
               Work Experience
@@ -148,24 +145,24 @@ export default function Resume() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   viewport={{ once: true }}
-                  className="relative pl-8 border-l-2 border-blue-200"
+                  className="relative pl-8 border-l-2 border-accent/30"
                 >
-                  <div className="absolute -left-2 w-4 h-4 bg-blue-600 rounded-full"></div>
-                  <div className="bg-white p-6 rounded-lg shadow-md">
-                    <div className="flex items-center gap-2 text-blue-600 text-sm font-medium mb-2">
+                  <div className="absolute -left-2 w-4 h-4 bg-gradient-to-br from-accent to-highlight rounded-full shadow-md"></div>
+                  <div className="card-textile p-6 rounded-lg">
+                    <div className="flex items-center gap-2 text-primary text-sm font-medium mb-2">
                       <Calendar size={16} />
                       {item.year}
                     </div>
-                    <h4 className="text-xl font-semibold text-gray-900 mb-2">{item.position}</h4>
-                    <div className="flex items-center gap-2 text-gray-600 mb-2">
+                    <h4 className="text-xl font-semibold text-foreground mb-2">{item.position}</h4>
+                    <div className="flex items-center gap-2 text-secondary mb-2">
                       <Building size={16} />
                       {item.company}
                     </div>
-                    <div className="flex items-center gap-2 text-gray-600 mb-3">
+                    <div className="flex items-center gap-2 text-secondary mb-3">
                       <MapPin size={16} />
                       {item.location}
                     </div>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-secondary">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -173,7 +170,7 @@ export default function Resume() {
           </motion.div>
         </div>
 
-        {/* Certifications */}
+        {/* Enhanced Certifications with new theme styling */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -181,7 +178,7 @@ export default function Resume() {
           viewport={{ once: true }}
           className="mt-16"
         >
-          <h3 className="text-2xl font-bold text-gray-900 mb-8 font-heading text-center">
+          <h3 className="text-2xl font-bold text-primary mb-8 font-heading text-center textile-border">
             Certifications
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -192,14 +189,17 @@ export default function Resume() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white p-4 rounded-lg shadow-md text-center hover:shadow-lg transition-shadow duration-200"
+                className="card-textile p-4 rounded-lg text-center hover-lift"
               >
-                <div className="text-blue-600 text-sm font-medium">{cert}</div>
+                <div className="text-primary text-sm font-medium">{cert}</div>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
+      
+      {/* Section divider with new theme styling */}
+      <div className="section-divider"></div>
     </section>
   );
 }

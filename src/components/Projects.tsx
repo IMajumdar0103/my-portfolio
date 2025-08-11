@@ -71,7 +71,7 @@ export default function Projects() {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-20 bg-white">
+    <section id="projects" className="py-20 bg-background ikat-pattern">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -80,17 +80,14 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 font-heading">
-            Featured Projects
-          </h2>
-          <div className="w-24 h-1 bg-blue-600 mx-auto mb-8"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 font-heading textile-border">Featured Projects</h2>
+          <p className="text-lg text-secondary max-w-2xl mx-auto">
             Here are some of the projects I&apos;ve worked on, showcasing my expertise in test automation, 
             API testing, and software development.
           </p>
         </motion.div>
 
-        {/* Category Filter */}
+        {/* Enhanced Category Filter with new theme styling */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,10 +99,10 @@ export default function Projects() {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 selectedCategory === category
-                  ? 'bg-blue-600 text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? 'btn-textile text-white shadow-lg hover-lift'
+                  : 'btn-textile-outline hover-lift'
               }`}
             >
               {category}
@@ -113,7 +110,7 @@ export default function Projects() {
           ))}
         </motion.div>
 
-        {/* Projects Grid */}
+        {/* Enhanced Projects Grid with new theme styling */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -123,46 +120,46 @@ export default function Projects() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ y: -5 }}
-              className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden"
+              className="card-textile rounded-xl overflow-hidden hover-lift"
             >
               {/* Project Header */}
               <div className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <project.icon className="w-5 h-5 text-blue-600" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center border border-primary/20">
+                    <project.icon className="w-5 h-5 text-primary" />
                   </div>
-                  <span className="text-xs font-medium text-blue-600 bg-blue-50 px-2 py-1 rounded-full">
+                  <span className="text-xs font-medium text-primary bg-primary/10 px-2 py-1 rounded-full border border-primary/20">
                     {project.category}
                   </span>
                 </div>
                 
-                <h3 className="text-xl font-bold text-gray-900 mb-3 font-heading">
+                <h3 className="text-xl font-bold text-foreground mb-3 font-heading">
                   {project.title}
                 </h3>
                 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-secondary mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
-                {/* Tech Stack */}
+                {/* Enhanced Tech Stack with new theme styling */}
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tech.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                      className="px-3 py-1 bg-white text-primary text-xs rounded-full border border-primary/20 hover:border-primary/40 transition-all duration-300 shadow-sm"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* Project Links */}
+                {/* Enhanced Project Links with new theme styling */}
                 <div className="flex gap-3">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors duration-200 text-sm font-medium"
+                    className="btn-textile flex items-center gap-2 px-4 py-2 text-white rounded-lg text-sm font-medium hover-lift"
                   >
                     <Github size={16} />
                     Code
@@ -173,7 +170,7 @@ export default function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200 text-sm font-medium"
+                      className="btn-textile-outline flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium hover-lift"
                     >
                       <ExternalLink size={16} />
                       Demo
@@ -185,7 +182,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Call to Action */}
+        {/* Enhanced Call to Action with new theme styling */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -193,7 +190,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <p className="text-lg text-gray-600 mb-6">
+          <p className="text-lg text-secondary mb-6">
             Interested in seeing more of my work?
           </p>
           <motion.a
@@ -202,13 +199,16 @@ export default function Projects() {
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="btn-textile inline-flex items-center gap-2 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl hover-lift"
           >
             <Github size={20} />
             View All Projects on GitHub
           </motion.a>
         </motion.div>
       </div>
+      
+      {/* Section divider with new theme styling */}
+      <div className="section-divider"></div>
     </section>
   );
 }
